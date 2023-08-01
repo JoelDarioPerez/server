@@ -91,7 +91,7 @@ const newPackage = (data) => {
   let DireccionLong = long >= 0 ? "E" : "W";
   let Hora = time(fechaHora);
   let Velocidad = convertKmHToKnots(vel);
-  let imei = 013226004207938;
+  let imei = "013226004207938";
   let rumbo = divided[11];
   let latitud = convertLatitude(Math.abs(lat)); // Quitamos el signo negativo
   let longitud = convertLongitude(Math.abs(long)); // Quitamos el signo negativo
