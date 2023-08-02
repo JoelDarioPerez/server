@@ -51,19 +51,22 @@ const newPackage = (data) => {
     let long = divided[5];
 
     function convertLongitude(long) {
-      long = parseFloat(long);
+      longitude = parseFloat(long);
 
+      // Asegurarse de que la longitud esté en el rango válido (-180 a 180).
+      if (longitude < -180 || longitude > 180) {
+          throw new Error("La longitud debe estar en el rango de -180 a 180.");
+      }
+  
       // Obtener los grados y minutos.
-      let degrees = Math.floor(Math.abs(long));
-      let minutes = (Math.abs(long) - degrees) * 60;
-
-      // Obtener la dirección (E o W).
-      let direction = long >= 0 ? "E" : "W";
-
-      // Devolver la longitud en el formato "DDDMM.MMMM".
-      return `${degrees.toString().padStart(3, "0")}${minutes
-        .toFixed(5)
-        .padStart(8, "0")}`;
+      let degrees = Math.floor(Math.abs(longitude));
+      let minutes = (Math.abs(longitude) - degrees) * 60;
+  
+      // Formatear los minutos con cuatro dígitos después del punto decimal.
+      let formattedMinutes = minutes.toFixed(4).padStart(9, "0");
+  
+      // Devolver la longitud en el formato "DDDFF.FFFF".
+      return `${degrees.toString().padStart(3, "0")}${formattedMinutes}`;
     }
 
     let vel = divided[10];
