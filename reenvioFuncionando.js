@@ -51,7 +51,6 @@ const newPackage = (data) => {
     let long = divided[5];
 
     function convertLongitude(long) {
-      // Convertir la longitud a un número decimal.
       long = parseFloat(long);
 
       // Obtener los grados y minutos.
@@ -62,7 +61,9 @@ const newPackage = (data) => {
       let direction = long >= 0 ? "E" : "W";
 
       // Devolver la longitud en el formato "DDDMM.MMMM".
-      return `${degrees.toString().padStart(3, "0")}${minutes.toFixed(4)}`;
+      return `${degrees.toString().padStart(3, "0")}${minutes
+        .toFixed(5)
+        .padStart(8, "0")}`;
     }
 
     let vel = divided[10];
